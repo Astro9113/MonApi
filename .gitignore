@@ -1,0 +1,8 @@
+node_modules/
+.monitor
+config/
+Makefile
+.DS_Store
+.env
+
+/public/xiaoshuo
