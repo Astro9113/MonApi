@@ -12,7 +12,11 @@
 
 require('dotenv').config();
 
-const fs = require('fs');
+
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+
 const join = require('path').join;
 const express = require('express');
 const mongoose = require('mongoose');
@@ -46,8 +50,32 @@ connect()
 
 function listen () {
   if (app.get('env') === 'test') return;
-  app.listen(port);
-  console.log('Express app started on port ' + port);
+
+  // var debug = true;
+  var debug = false;
+
+  if (debug) {
+      app.listen(port);
+      console.log('Express app started on port ' + port);
+  } else {
+      var privateKey  = fs.readFileSync('/root/.cert/1523182031415.key', 'utf8'),
+          certificate = fs.readFileSync('/root/.cert/1523182031415.pem', 'utf8');
+      var credentials = {key: privateKey, cert: certificate};
+
+      var httpServer = http.createServer(app);
+      var httpsServer = https.createServer(credentials, app);
+      var PORT = 80;
+      var SSLPORT = 443;
+
+      httpServer.listen(PORT, function() {
+          console.log('HTTP Server is running on: http://localhost:%s', PORT);
+      });
+
+      httpsServer.listen(SSLPORT, function() {
+          console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT);
+      });
+  }
+
 }
 
 function connect () {

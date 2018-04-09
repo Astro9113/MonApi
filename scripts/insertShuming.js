@@ -7,7 +7,7 @@ MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("xiaoshuo");
 
-    var myobj = { name: "卿卿吾妹", title: 'yanqing', insertTime: new Date().getTime()};
+    var myobj = { name: "卿卿吾妹", title: 'yanqing', insertTime: new Date().getTime(), img: '/xiaoshuo/image/qingqingwumei.jpg'};
 
     dbo.collection("shuming").insertOne(myobj, function(err, res) {
 
