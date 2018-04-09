@@ -17,7 +17,7 @@ const Schema = mongoose.Schema;
  * Article Schema
  */
 
-const XiaoshuoSchema = new Schema({
+const YanqingSchema = new Schema({
     name: { type : String, default : '', trim : true },
     title: { type : String, default : '', trim : true },
     insertTime: { type : String, default : '', trim : true }
@@ -28,7 +28,7 @@ const XiaoshuoSchema = new Schema({
  * Pre-remove hook
  */
 
-XiaoshuoSchema.pre('remove', function (next) {
+YanqingSchema.pre('remove', function (next) {
     // const imager = new Imager(imagerConfig, 'S3');
     // const files = this.image.files;
 
@@ -44,7 +44,7 @@ XiaoshuoSchema.pre('remove', function (next) {
  * Methods
  */
 
-XiaoshuoSchema.methods = {
+YanqingSchema.methods = {
 
     /**
      * Save article and upload image
@@ -119,7 +119,7 @@ XiaoshuoSchema.methods = {
  * Statics
  */
 
-XiaoshuoSchema.statics = {
+YanqingSchema.statics = {
 
     /**
      * Find article by id
@@ -156,4 +156,4 @@ XiaoshuoSchema.statics = {
     }
 };
 
-mongoose.model('Xiaoshuo', XiaoshuoSchema, 'xiaoshuo');
+mongoose.model('Yanqing', YanqingSchema, 'yanqing');

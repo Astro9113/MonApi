@@ -6,7 +6,7 @@
 
 const mongoose = require('mongoose');
 const { wrap: async } = require('co');
-const Xiaoshuo = mongoose.model('Xiaoshuo');
+const Yanqing = mongoose.model('Yanqing');
 
 
 /**
@@ -24,8 +24,8 @@ exports.index = async(function* (req, res) {
 
     if (_id) options.criteria = { _id };
 
-    const result = yield Xiaoshuo.list(options);
-    const count = yield Xiaoshuo.count();
+    const result = yield Yanqing.list(options);
+    const count = yield Yanqing.count();
 
     res.send({
         result: result,
