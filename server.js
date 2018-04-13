@@ -51,8 +51,8 @@ connect()
 function listen () {
   if (app.get('env') === 'test') return;
 
-  // var debug = true;
-  var debug = false;
+  var debug = true;
+  // var debug = false;
 
   if (debug) {
       app.listen(port);
@@ -84,35 +84,3 @@ function connect () {
     return mongoose.connect('mongodb://localhost:27017/xiaoshuo').connection;
 }
 
-
-
-/*
-
-var express = require('express');
-var path = require('path');
-
-var fs = require('fs');
-var http = require('http');
-var https = require('https');
-privateKey  = fs.readFileSync('./cert/1523182031415.key', 'utf8'),
-certificate = fs.readFileSync('./cert/1523182031415.pem', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
-
-var app = express();
-
-app.use(express.static(path.join(__dirname, 'index')));
-
-httpServer = http.createServer(app);
-httpsServer = https.createServer(credentials, app);
-var PORT = 80;
-var SSLPORT = 443;
-
-httpServer.listen(PORT, function() {
-    console.log('HTTP Server is running on: http://localhost:%s', PORT);
-});
-
-httpsServer.listen(SSLPORT, function() {
-    console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT);
-});
-
- */
