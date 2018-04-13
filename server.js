@@ -51,8 +51,8 @@ connect()
 function listen () {
   if (app.get('env') === 'test') return;
 
-  var debug = true;
-  // var debug = false;
+  // var debug = true;
+  var debug = false;
 
   if (debug) {
       app.listen(port);
